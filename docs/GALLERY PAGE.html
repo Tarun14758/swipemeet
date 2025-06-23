@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - SwipeMeet</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+    }
+
+    header {
+      background: #1f1f1f;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 3.5rem;
+      color: #ff5e7b;
+      font-weight: 900;
+      text-shadow: 2px 2px #222;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #ff5e7b;
+      color: white;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .buttons button {
+      background-color: #ff5e7b;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: url('https://images.pexels.com/photos/6578398/pexels-photo-6578398.jpeg') center center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .hero h1 {
+      z-index: 2;
+      font-size: 5rem;
+      color: #ff5e7b;
+      text-shadow: 3px 3px #000;
+    }
+
+    .gallery-section {
+      padding: 60px 10%;
+      text-align: center;
+    }
+
+    .gallery-section h2 {
+      font-size: 2.5rem;
+      color: #ff5e7b;
+      margin-bottom: 20px;
+    }
+
+    .gallery-section p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 40px;
+    }
+
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .gallery-grid img {
+      width: 300px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 1rem;
+      color: #aaa;
+      background-color: #1a1a1a;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gallery-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">💖 SwipeMeet</div>
+    <nav>
+      <a href="FIRST HOME PAGE.html">Home</a>
+      <a href="FEATURE PAGE.html">Feature</a>
+     
+      <a href="CONTACT.html">Contact</a>
+    </nav>
+    <div class="buttons">
+      <button onclick="location.href='login.html'">Login</button>
+      <button onclick="location.href='register.html'">Register</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Our Love Gallery</h1>
+  </section>
+
+  <section class="gallery-section">
+    <h2>Couples Who Found Love on SwipeMeet</h2>
+    <p>Real stories, real connections. These beautiful moments are a result of genuine relationships built through our app.</p>
+    <div class="gallery-grid">
+      <img src="https://images.pexels.com/photos/889179/pexels-photo-889179.jpeg" alt="Couple smiling">
+      <img src="https://images.pexels.com/photos/3692772/pexels-photo-3692772.jpeg" alt="Couple on a date">
+      <img src="https://images.pexels.com/photos/4607435/pexels-photo-4607435.jpeg" alt="Holding hands">
+      <img src="https://images.pexels.com/photos/8296956/pexels-photo-8296956.jpeg" alt="Engaged couple">
+      <img src="https://images.pexels.com/photos/4618000/pexels-photo-4618000.jpeg" alt="Beach walk">
+      <img src="https://images.pexels.com/photos/5415902/pexels-photo-5415902.jpeg" alt="Laughing together">
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 SwipeMeet. All Rights Reserved.
+  </footer>
+</body>
+</html>
