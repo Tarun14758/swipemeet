@@ -1,30 +1,26 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path'); // ✅ Required for working with folder paths
+const path = require('path');
 const userRoutes = require('./routes/user');
+require('dotenv').config(); // ✅ Load env variables
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-const MONGO_URI = 'mongodb+srv://jyotibijarbia2001:7RzcCcTmOKRnXPiK@cluster0.wsprgoz.mongodb.net/myAppDB?retryWrites=true&w=majority&appName=Cluster0';
+// ✅ Use env variable for MongoDB URI
+const MONGO_URI = process.env.MONGODB_URI;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
-
-// ✅ Serve static frontend files from "public" folder
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Routes (for API calls)
 app.use('/api/users', userRoutes);
 
-// Connect to MongoDB and start the server
 mongoose.connect(MONGO_URI)
     .then(() => {
         console.log('✅ Connected to MongoDB');
         app.listen(PORT, () => {
-            console.log(`🚀 Server is running at http://localhost:${PORT}`);
+            console.log(`🚀 Server is running on port ${PORT}`);
         });
     })
     .catch((err) => {
