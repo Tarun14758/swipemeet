@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SwipeMeet - Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1f1f1f;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .profile-box {
+      background: #2c2c2c;
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 94, 123, 0.4);
+    }
+
+    h2 {
+      color: #ff5e7b;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ff5e7b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: #ff3366;
+      box-shadow: 0 0 8px #ff5e7b;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-box">
+    <h2>Your Profile</h2>
+    <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+    <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+    <p><strong>Age:</strong> <span id="age">Loading...</span></p>
+    <p><strong>Gender:</strong> <span id="gender">Loading...</span></p>
+    <p><strong>Bio:</strong> <span id="bio">Loading...</span></p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
+
+    async function fetchProfile() {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        alert("No token found. Please login again.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/users/profile", {
+          method: "GET",
+          headers: {
+            "Authorization": "Bearer " + token
+          }
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          const user = data.user;
+          document.getElementById("name").innerText = user.name || "N/A";
+          document.getElementById("email").innerText = user.email || "N/A";
+          document.getElementById("age").innerText = user.age || "N/A";
+          document.getElementById("gender").innerText = user.gender || "N/A";
+          document.getElementById("bio").innerText = user.bio || "N/A";
+        } else {
+          alert(data.error || "Failed to load profile.");
+          window.location.href = "login.html";
+        }
+      } catch (error) {
+        alert("Error fetching profile.");
+        window.location.href = "login.html";
+      }
+    }
+
+    fetchProfile();
+  </script>
+</body>
+</html>
