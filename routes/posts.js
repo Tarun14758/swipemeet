@@ -29,11 +29,31 @@ router.post('/', authenticateToken, async (req, res) => {
 // ✅ Get all posts (public)
 router.get('/', async (req, res) => {
     try {
-        const posts = await Post.find().populate('userId', 'name email').sort({ createdAt: -1 });
+        const posts = await Post.find()
+            .populate('userId', 'name email')
+            .sort({ createdAt: -1 });
+
         res.status(200).json(posts);
     } catch (err) {
         console.error('Error fetching posts:', err);
         res.status(500).json({ error: 'Failed to fetch posts' });
+    }
+});
+
+// ✅ Get a single post by ID (public)
+router.get('/:id', async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id)
+            .populate('userId', 'name email');
+
+        if (!post) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+
+        res.status(200).json(post);
+    } catch (err) {
+        console.error('Error fetching post by ID:', err);
+        res.status(500).json({ error: 'Failed to fetch post' });
     }
 });
 
