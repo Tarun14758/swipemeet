@@ -81,12 +81,15 @@
         const result = await res.json();
 
         if (res.ok) {
-          localStorage.setItem("token", result.token); // Save token
-          document.getElementById("message").innerText = "✅ Login successful!";
-          // Redirect to profile or home page
-          window.location.href = "profile.html";
+          // ✅ Save token and redirect to dashboard
+          localStorage.setItem("token", result.token);
+          document.getElementById("message").innerText = "✅ Login successful! Redirecting...";
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1000);
         } else {
-          document.getElementById("message").innerText = "❌ " + (result.message || "Login failed!");
+          // ❌ Show error from backend
+          document.getElementById("message").innerText = "❌ " + (result.error || "Login failed!");
         }
       } catch (error) {
         document.getElementById("message").innerText = "❌ Server error. Try again later.";
