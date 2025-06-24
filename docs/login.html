@@ -80,21 +80,23 @@
 
         const result = await res.json();
 
-        if (res.ok) {
-          // ✅ Save token and redirect to dashboard
-          localStorage.setItem("token", result.token);
-          document.getElementById("message").innerText = "✅ Login successful! Redirecting...";
-          setTimeout(() => {
-            window.location.href = "dashboard.html";
-          }, 1000);
-        } else {
-          // ❌ Show error from backend
-          document.getElementById("message").innerText = "❌ " + (result.error || "Login failed!");
-        }
-      } catch (error) {
-        document.getElementById("message").innerText = "❌ Server error. Try again later.";
-      }
-    });
+     if (res.ok) {
+  // ✅ Save token and redirect to dashboard
+  localStorage.setItem("token", result.token);
+  document.getElementById("message").innerText = "✅ Login successful! Redirecting...";
+
+  // Optional: Alert to confirm it's working
+  alert("Redirecting to dashboard...");
+
+  // ✅ Actual redirect
+  setTimeout(() => {
+    window.location.href = "dashboard.html";
+  }, 1000);
+} else {
+  // ❌ Show error from backend
+  document.getElementById("message").innerText = "❌ " + (result.error || "Login failed!");
+}
+  
   </script>
 </body>
 </html>
