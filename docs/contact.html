@@ -58,6 +58,7 @@
     .buttons {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .buttons button {
@@ -208,20 +209,74 @@
       }
     }
 
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      .contact-form h2,
+      .contact-info h2 {
+        font-size: 2.2rem;
+      }
+
+      .contact-form p,
+      .contact-info p {
+        font-size: 1.1rem;
+      }
+
+      .contact-form button {
+        font-size: 1.1rem;
+      }
+    }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
       }
 
       nav {
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
       }
 
-      .contact-container {
-        flex-direction: column;
-        align-items: center;
+      nav a {
+        padding: 8px 15px;
+      }
+
+      .buttons {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .contact-section {
+        padding: 40px 5%;
+      }
+
+      .contact-form,
+      .contact-info {
+        padding: 25px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        font-size: 1rem;
+        padding: 15px;
+      }
+
+      .contact-form button {
+        padding: 15px;
+        font-size: 1rem;
+      }
+
+      footer {
+        font-size: 0.9rem;
       }
     }
   </style>
