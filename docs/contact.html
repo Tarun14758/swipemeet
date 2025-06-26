@@ -209,50 +209,47 @@
       }
     }
 
-    @media (max-width: 1024px) {
-      .hero h1 {
-        font-size: 3.5rem;
-      }
-
-      .contact-form h2,
-      .contact-info h2 {
-        font-size: 2.2rem;
-      }
-
-      .contact-form p,
-      .contact-info p {
-        font-size: 1.1rem;
-      }
-
-      .contact-form button {
-        font-size: 1.1rem;
-      }
-    }
-
+    /* ✅ Updated Responsive Styling */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 15px;
+        padding: 15px 5%;
+      }
+
+      .logo {
+        font-size: 2.2rem;
+        text-align: center;
       }
 
       nav {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         width: 100%;
+        gap: 5px;
       }
 
       nav a {
         padding: 8px 15px;
+        font-size: 1rem;
       }
 
       .buttons {
+        flex-direction: column;
         width: 100%;
-        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .buttons button {
+        width: 80%;
+        font-size: 1rem;
+        padding: 12px;
       }
 
       .hero h1 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
       }
 
       .contact-section {
@@ -277,6 +274,7 @@
 
       footer {
         font-size: 0.9rem;
+        padding: 20px;
       }
     }
   </style>
@@ -327,3 +325,4 @@
   </footer>
 </body>
 </html>
+
